@@ -1,2 +1,2 @@
 # DWorld
-BlogPost project which is about travel, food, world cuisine, fashion and so many.
+BlogPost project which is about travel, food, world cuisine, fashion, languages and so many.
