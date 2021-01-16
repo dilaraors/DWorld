@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+      D-World
+    </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="main-bar">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="blog-posts">Travel</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+            Food Recipes
+          </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Asia</a></li>
+                        <li><a class="dropdown-item" href="#">Europe</a></li>
+                        <li><a class="dropdown-item" href="#">Middle-East</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <a href="#" onclick="signOut();">Sign out</a> -->
+        <a class="nav-item nav-link" routerLink="/login">Login</a>
+        <a class="nav-item nav-link" routerLink="/register">Register</a>
+        <div class="dropdown">
+            <button class="btn user" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+        <em class="fas fa-user-circle fa-lg"></em>
+      </button>
+            <div *ngIf="signedIn; else logIn">
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="#">My Account</a></li>
+                    <li><a class="dropdown-item" href="#">Saved Posts</a></li>
+                    <li><a class="dropdown-item" href="#">Liked Posts</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Sign Out</a></li>
+                </ul>
+            </div>
+            <ng-template #logIn>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="/login">Login</a></li>
+                    <li><a class="dropdown-item" href="/register">Register</a></li>
+                </ul>
+            </ng-template>
+
+        </div>
+    </div>
+</nav>
+<router-outlet></router-outlet>

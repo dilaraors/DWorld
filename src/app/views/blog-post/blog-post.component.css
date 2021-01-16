@@ -1,0 +1,28 @@
+.blogpost {
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.youtubevideo {
+    width: 560px;
+    height: 315px;
+}
+
+h1 {
+    padding-top: 5%;
+}
+
+h2 {
+    padding: 5%;
+}
+
+.blog-content {
+    margin: 5%;
+    background-color: rgba(245, 245, 220, 0.692);
+    border-radius: 2%;
+}
+
+.image-galery {
+    padding-top: 5%;
+}

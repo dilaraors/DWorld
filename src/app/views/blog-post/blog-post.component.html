@@ -1,0 +1,37 @@
+<div class="blogpost" style="background-image: url('{{blogPost.headerImageUrl}}');">
+    <h1>{{ blogPost.title }}</h1>
+    <div class="blog-content">
+        <h2> {{ blogPost.body }} </h2>
+        <div>
+            <iframe class="youtubevideo" [src]="url">
+            </iframe>
+        </div>
+        <div class="image-galery">
+            <h3>Image Galery</h3>
+            <div id="carousel-indicators" class="carousel slide carousel-fade" data-ride="carousel">
+
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-indicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-indicators" data-slide-to="1"></li>
+                    <li data-target="#carousel-indicators" data-slide-to="2"></li>
+                </ol>
+
+                <div class="container" style="padding: 5%;  border-radius: 2% !important;">
+                    <div class="carousel-inner" style=" width:100%; height: 400px !important; border-radius: 2% !important;">
+                        <div class="carousel-item active" *ngFor="let imgSrc of images; let index = index;let isFirst = first" [ngClass]="{active:isFirst}">
+                            <img [src]="imgSrc" class="d-block w-100" alt="First">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carousel-indicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel-indicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
