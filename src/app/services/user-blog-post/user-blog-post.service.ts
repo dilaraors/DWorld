@@ -1,0 +1,38 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
+import { BlogPost } from 'src/app/models/blog-post.model';
+import { environment } from 'src/environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserBlogPostService {
+
+  myAppUrl: string;
+  myApiUrl: string;
+  httpOptions = { 
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8'
+    })
+  };
+  userId;
+
+  constructor(private http: HttpClient) {
+    this.myAppUrl = environment.apiEndpoint;
+    this.myApiUrl = '/api/UserBlogPost/';
+    this.userId = localStorage.getItem("UserId");
+  }
+
+  getBlogPostsByType(type: number): Observable<BlogPost[]> {
+    return this.http.get<any>(this.myAppUrl + this.myApiUrl + "GetByType/"+type + "/" + this.userId, this.httpOptions);
+  }
+
+  addByType(model): Observable<any>{
+    model["UserId"]= parseInt(this.userId);
+    debugger;
+    return this.http.post<any>(this.myAppUrl + this.myApiUrl + "AddByType", JSON.stringify(model), this.httpOptions);
+  }
+
+}

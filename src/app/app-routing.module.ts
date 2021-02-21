@@ -7,21 +7,45 @@ import { HomePageComponent } from './views/home-page/home-page.component';
 import { BlogPostsComponent } from './views/blog-posts/blog-posts.component';
 import { LoginPageComponent } from './views/login-page/login-page.component';
 import { RegisterPageComponent } from './views/register-page/register-page.component';
+import { LoginComponent } from './views/admin/login/login.component';
+import { RegisterComponent } from './views/admin/register/register.component';
+import { ForgotPasswordComponent } from './views/admin/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './views/admin/verify-email/verify-email.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { UserComponent } from './views/user/user.component';
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent, pathMatch: 'full' },
+  { path: '', pathMatch: 'full', component: HomePageComponent },
   { path: 'blogposts', component: BlogPostsComponent},
   { path: 'blogpost/:id', component: BlogPostComponent },
   { path: 'iyzipay', component: IyziPayComponent },
   { path: 'add', component: BlogPostAddEditComponent },
   { path: 'blogpost/edit/:id', component: BlogPostAddEditComponent },
-  { path: 'login', component: LoginPageComponent },
-  { path: 'register', component: RegisterPageComponent },
-  { path: '**', redirectTo: '/' }
+  { path: 'login', component: LoginPageComponent},
+  { path: 'register', component: RegisterPageComponent},
+  { path: 'auth-login', component: LoginComponent},//firebase
+  { path: 'auth-register', component: RegisterComponent},//firebase
+  { path: 'user', component: UserComponent},
+  { path: '**', redirectTo: '/' },
+  { path: '**', redirectTo: '/' },
+  {
+    path:  'admin',
+    children: [
+        // [...]
+        { path:  'login-auth',component:  LoginComponent, pathMatch: 'full'},
+        { path:  'register-auth', component:  RegisterComponent, pathMatch: 'full' },
+        { path:  'forgot-password', component:  ForgotPasswordComponent },
+        { path:  'verify-email', component:  VerifyEmailComponent }
+    ]
+    }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [ 
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    FormsModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

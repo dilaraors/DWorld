@@ -37,6 +37,7 @@ export class BlogPostService {
       catchError(this.errorHandler)
     );
 }
+
   addBlogPost(blogPost): Observable<BlogPost> {
     return this.http.post<BlogPost>(this.myAppUrl + this.myApiUrl + "Add", JSON.stringify(blogPost), this.httpOptions)
       .pipe(

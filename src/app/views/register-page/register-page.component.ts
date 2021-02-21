@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Register } from 'src/app/models/register.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
@@ -18,9 +18,10 @@ export class RegisterPageComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private modalService: NgbModal
   ) {
-    if (this.authenticationService.currentUserValue) {
+    if (localStorage.getItem('isLoggedIn') == "true") {
       this.router.navigate(['/']);
     }
   }
@@ -38,6 +39,10 @@ export class RegisterPageComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(1)]],
       confirm_password: ['', Validators.required],
     });
+  }
+
+  login() {
+    this.modalService.dismissAll(RegisterPageComponent);
   }
 
   onSubmit() {
@@ -62,13 +67,16 @@ export class RegisterPageComponent implements OnInit {
       .register(register)
       .subscribe(
         (data) => {
-          debugger;
+          localStorage.setItem('isLoggedIn',"true");
           this.router.navigate(['/'], {
             queryParams: { registered: true },
           });
+          this.modalService.dismissAll(RegisterPageComponent);
+          location.reload();
+          this.router.navigate(['/']);
         },
         (error) => {
-          this.error = error;
+          this.error = error.error.message;
           this.loading = false;
         }
       );

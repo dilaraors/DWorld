@@ -26,3 +26,42 @@ h2 {
 .image-galery {
     padding-top: 5%;
 }
+
+#like-button,
+#save-button {
+    cursor: pointer;
+    padding: 10px 12px 8px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 10px 0 0 20px;
+    transition: .2s;
+    font-size: xxx-large;
+}
+
+.normalHeart,
+.normalSave {
+    color: grey;
+}
+
+.likedHeart {
+    color: pink;
+    animation: size .4s;
+}
+
+.savedPost {
+    color: rgb(0, 162, 255);
+    animation: size .4s;
+}
+
+@keyframes size {
+    0% {
+        padding: 10px 12px 8px;
+    }
+    50% {
+        padding: 14px 16px 12px;
+        margin-top: -4px;
+    }
+    100% {
+        padding: 10px 12px 8px;
+    }
+}

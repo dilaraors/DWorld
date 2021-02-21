@@ -22,7 +22,6 @@ export class HomePageComponent implements OnInit {
       .subscribe((data) => (this.imgSrcs = data['result'].homePageImages));
     this.blogPostService.getBlogPosts().subscribe((data) => {
       this.blogPosts = data['result'];
-      debugger;
     });
   }
 }
