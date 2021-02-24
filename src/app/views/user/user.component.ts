@@ -70,7 +70,13 @@ export class UserComponent implements OnInit {
   }
   
   onSubmit(){
+    var model = {
+      "name": this.registerForm.get("inputName").value,
+      "surname": this.registerForm.get("inputSurname").value,
+      "userName": this.registerForm.get("inputUserName").value
+    };
 
+   this.userService.updateUserInfo(model).subscribe(()=>{});
   }
 
   likedPosts(){

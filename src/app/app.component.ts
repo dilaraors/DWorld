@@ -54,6 +54,7 @@ export class AppComponent {
       localStorage.removeItem('AuthToken');
       localStorage.removeItem('UserId');
       localStorage.removeItem('userId');
+      location.reload();
       this.router.navigate(['/']);
     });
   }

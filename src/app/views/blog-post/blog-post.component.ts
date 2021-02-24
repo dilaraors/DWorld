@@ -38,22 +38,60 @@ export class BlogPostComponent implements OnInit {
       this.blogPost = data["result"];
       this.images = data["result"].imageGallery;
       this.url = this.sanitizer.bypassSecurityTrustResourceUrl(data["result"].youTubeVideoURL);
+      this.GetBlogPostByTypeExistence(BlogPostType.Liked, data["result"].id);
+      this.GetBlogPostByTypeExistence(BlogPostType.Saved, data["result"].id);
     });
   }
 
-  likedPost(postId){
-    debugger;
-    this.heart.classList.toggle('likedHeart');
+  GetBlogPostByTypeExistence(type, postId){
     var model = {
       "BlogPostId":postId,
-      "Type": BlogPostType.Liked
+      "Type": type
     };
-    this.userBlogPostService.addByType(model).subscribe(data => {
-      console.log(data);
-    });
+    this.userBlogPostService.getBlogPostByTypeExistence(model).subscribe(data => {
+      if(type == BlogPostType.Liked){
+        data.result ? this.heart.classList.replace('normalHeart','likedHeart') : this.heart.classList.replace('likedHeart', 'normalHeart');
+      }else{
+        data.result ? this.post.classList.replace('normalSave','savedPost') : this.post.classList.replace('savedPost', 'normalSave');
+       }
+      })
   }
 
-  savedPost(){
-    this.post.classList.toggle('savedPost');
+  likedSavedPost(postId, type){
+    var model = {
+      "BlogPostId":postId,
+      "Type": type == "like" ? BlogPostType.Liked : BlogPostType.Saved
+    };
+    this.userBlogPostService.getBlogPostByTypeExistence(model).subscribe(data => {
+      if(type == 'like'){
+        if(data.result && this.heart.classList[2]=="likedHeart"){
+          this.userBlogPostService.deleteByType(model).subscribe(() => {
+            this.heart.classList.replace('likedHeart', 'normalHeart')
+          });
+        }else if(data.result && this.post.classList[2]=="normalHeart"){
+          this.userBlogPostService.addByType(model).subscribe(() => {
+            this.heart.classList.replace('normalHeart', 'likedHeart');
+          });
+        }else if(!data.result && this.heart.classList[2]=="normalHeart")
+          this.userBlogPostService.addByType(model).subscribe(() => {
+            this.heart.classList.replace('normalHeart', 'likedHeart');
+          });
+      }else if('save'){
+         if(data.result && this.post.classList[2]=="savedPost"){
+          this.userBlogPostService.deleteByType(model).subscribe(() => {
+            this.post.classList.replace('savedPost', 'normalSave');
+          });
+        }else if(data.result && this.post.classList[2]=="normalSave"){
+          this.userBlogPostService.addByType(model).subscribe(() => {
+            this.heart.classList.replace('normalSave', 'savedPost');
+          });
+        }
+        else if(!data.result && this.post.classList[2]=="normalSave")
+          this.userBlogPostService.addByType(model).subscribe(() => {
+            this.heart.classList.replace('normalSave', 'savedPost');
+          });
+      }
+      location.reload();
+    });
   }
 }

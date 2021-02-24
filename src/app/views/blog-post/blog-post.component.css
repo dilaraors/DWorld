@@ -41,16 +41,19 @@ h2 {
 .normalHeart,
 .normalSave {
     color: grey;
+    cursor: pointer;
 }
 
 .likedHeart {
     color: pink;
     animation: size .4s;
+    cursor: pointer;
 }
 
 .savedPost {
     color: rgb(0, 162, 255);
     animation: size .4s;
+    cursor: pointer;
 }
 
 @keyframes size {

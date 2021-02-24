@@ -33,8 +33,12 @@ export class UserService {
      return this.http.get(this.myAppUrl + this.myApiUrl + "GetProfileImage/"+ this.userId);
   }
 
+  updateUserInfo(model): Observable<any> {
+    model["id"] = parseInt(this.userId);
+    return this.http.post<any>(this.myAppUrl + this.myApiUrl + "UpdateUserInfo",JSON.stringify(model),this.httpOptions);
+ }
+
   uploadProfileImage(file: Blob): any {
-    debugger;
     let formData: FormData = new FormData();
     formData.append('file', file);
     this.httpOptions.headers = new HttpHeaders().append('Content-Disposition', 'multipart/form-data');

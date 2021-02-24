@@ -34,8 +34,8 @@
             </div>
         </div>
         <div>
-            <i class="fa fa-heart normalHeart" id="like-button" (click)="likedPost(blogPost.id)"></i>
-            <i class="fa fa-save normalSave" id="save-button" (click)="savedPost()"></i>
+            <i class="fa fa-heart normalHeart" id="like-button" (click)="likedSavedPost(blogPost.id,'like')"></i>
+            <i class="fa fa-save normalSave" id="save-button" (click)="likedSavedPost(blogPost.id,'save')"></i>
         </div>
     </div>
 </div>

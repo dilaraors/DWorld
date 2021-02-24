@@ -31,8 +31,17 @@ export class UserBlogPostService {
 
   addByType(model): Observable<any>{
     model["UserId"]= parseInt(this.userId);
-    debugger;
     return this.http.post<any>(this.myAppUrl + this.myApiUrl + "AddByType", JSON.stringify(model), this.httpOptions);
+  }
+
+  deleteByType(model): Observable<any>{
+    model["UserId"]= parseInt(this.userId);
+    return this.http.post<any>(this.myAppUrl + this.myApiUrl + "DeleteByType", JSON.stringify(model), this.httpOptions);
+  }
+
+  getBlogPostByTypeExistence(model): Observable<any>{
+    model["UserId"]= parseInt(this.userId);
+    return this.http.post<any>(this.myAppUrl + this.myApiUrl + "GetBlogPostByTypeExistence", JSON.stringify(model), this.httpOptions);
   }
 
 }
