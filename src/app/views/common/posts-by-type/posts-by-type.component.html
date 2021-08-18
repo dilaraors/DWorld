@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-sm-6 mx-auto my-5" *ngFor="let blogPost of blogPosts">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front" style="background-image:url('{{blogPost.headerImageURL}}'); background-repeat:no-repeat;background-size:cover;">
+                </div>
+                <div class="flip-card-back">
+                    <h5 class="card-title">{{blogPost.title}}</h5>
+                    <a href="#" class="btn bg-info" [routerLink]="['/blogpost/',blogPost.id]">Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

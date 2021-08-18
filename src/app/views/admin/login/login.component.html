@@ -1,0 +1,41 @@
+<div class="container pt-3">
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-10 col-md-6">
+            <div class="card border-info">
+                <div class="card-header">Login</div>
+                <div class="card-body">
+                    <form class="loginForm" [formGroup]="loginForm">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" formControlName="email" class="form-control" ngClass="{ 'is-invalid': f.email.errors }" />
+                            <div *ngIf="f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">Email is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" formControlName="username" class="form-control" ngClass="{ 'is-invalid': f.username.errors }" />
+                            <div *ngIf="f.username.errors" class="invalid-feedback">
+                                <div *ngIf="f.username.errors.required">Username is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" formControlName="password" class="form-control" ngClass="{ 'is-invalid': f.password.errors }" />
+                            <div *ngIf="f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">Password is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-lg btn-primary btn-block mb-1" type="submit" [disabled]="!loginForm.valid" (click)="login()">Login</button>
+                            <div class="register_forgetpassword">
+                                <a class="btn btn-link" href="/auth-register">Register</a>
+                                <a class="btn btn-link" (click)="forgotPassword()">Forgot Password?</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

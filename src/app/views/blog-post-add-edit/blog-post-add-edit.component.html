@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-10" style="margin-top: 70px;
+        margin-bottom: 100px;">
+            <h1>{{actionType}} Blog Post</h1>
+            <form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+                <div class="form-group row">
+                    <label class=" control-label col-md-12" for="title">Title</label>
+                    <div class="col-md-12">
+                        <input class="form-control" type="text" id="title" formControlName="title">
+                    </div>
+                    <span class="text-danger ml-3" *ngIf="f.title.invalid && formDir.submitted">
+                        Title is required.
+                    </span>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-12" for="file">Header Image</label>
+                    <div class="col-md-12">
+                        <input id="fileInput" class="form-control" formControlName="file" type='file'
+                            (change)="onSelectFile($event)">
+                        <div>
+                            <img [src]="headerImage" class="rounded mb-3"
+                                style="margin: 3px; max-width: 200px; max-height: 200px;"><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-12" for="body">Body text</label>
+                    <div class="col-md-12">
+                        <textarea class="form-control" rows="15" formControlName="body"></textarea>
+                    </div>
+                    <span class="text-danger ml-3" *ngIf="f.body.invalid && formDir.submitted">
+                        Body is required.
+                    </span>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-12" for="files">Image Galery</label>
+                    <div class="col-md-12">
+                        <input id="fileInputs" class="form-control" formControlName="files" type='file' multiple
+                            (change)="onImageArrayChange($event)">
+                        <div>
+                            <img *ngFor="let image of images" [src]="images" class="rounded mb-3"
+                                style="margin: 3px; max-width: 200px; max-height: 200px;"><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-12" for="videoURL">YouTube Video URL</label>
+                    <div class="col-md-12">
+                        <input id="videoURL" class="form-control" formControlName="videoURL" type='text'>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="control-label" for="section">Section</label>
+                        <select class="form-control" formControlName="section" [(ngModel)]="selectedSection" (change)="getTopicsBySection()">
+                            <option *ngFor="let s of sections; let i = index" [ngValue]="s">
+                                {{s.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label" for="topic">Topic</label>
+                        <select id="topic" class="form-control" formControlName="topic">
+                            <option *ngFor="let t of topics; let i = index" [ngValue]="t">
+                                {{t.name}}</option>
+                        </select>
+                        <span class="text-danger ml-3" *ngIf="f.body.invalid && formDir.submitted">
+                            Topic is required.
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <button class="btn btn-secondary" (click)="cancel()">Cancel</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-success float-right">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

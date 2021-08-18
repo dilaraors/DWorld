@@ -1,0 +1,78 @@
+.blogpost {
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 30px;
+}
+
+.youtubevideo {
+    width: 560px;
+    height: 315px;
+}
+
+#imageGallery{
+    width: 80%;
+    height: 400px !important;
+    padding-left: 200px;
+    border-radius: 2% !important;
+}
+
+h1 {
+    padding-top: 5%;
+}
+
+h2 {
+    padding: 5%;
+}
+
+.blog-content {
+    margin: 5%;
+    background-color: rgba(245, 245, 220, 0.692);
+    border-radius: 2%;
+}
+
+.image-galery {
+    padding-top: 5%;
+}
+
+#like-button,
+#save-button {
+    cursor: pointer;
+    padding: 10px 12px 8px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 10px 0 0 20px;
+    transition: .2s;
+    font-size: xxx-large;
+}
+
+.normalHeart,
+.normalSave {
+    color: grey;
+    cursor: pointer;
+}
+
+.likedHeart {
+    color: pink;
+    animation: size .4s;
+    cursor: pointer;
+}
+
+.savedPost {
+    color: rgb(0, 162, 255);
+    animation: size .4s;
+    cursor: pointer;
+}
+
+@keyframes size {
+    0% {
+        padding: 10px 12px 8px;
+    }
+    50% {
+        padding: 14px 16px 12px;
+        margin-top: -4px;
+    }
+    100% {
+        padding: 10px 12px 8px;
+    }
+}

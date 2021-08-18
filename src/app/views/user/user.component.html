@@ -1,0 +1,70 @@
+<div id="container">
+    <div id="pic">
+        <div class="row">
+            <div class="small-12 medium-2 large-2 columns" style="position: relative; margin-top: 5%;">
+                <div class="container" style="padding: 0; margin: 0;">
+                    <div class="row">
+                        <div class="col-sm">
+                            <label class="hoverable" for="fileInput">
+                                <img [src]="url"> 
+                                <i id="default_image" class="fa fa-user fa-5x default-image"></i>
+                                <div class="hover-text">Choose file</div>
+                                <div class="background"></div>
+                              </label>
+                            <br/>
+                            <input id="fileInput" type='file' (change)="onSelectFile($event)">
+                            <button type="button" class="btn btn-info" style="margin-left: 20px;" (click)="onUpload()">Upload</button>
+                        </div>
+                        <div class="col-sm">
+                            <div class="header-account">
+                                <h1 class="name-user">dilara.ors</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="info">
+        <div class="row">
+            <div class="col-3">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+                </div>
+            </div>
+            <div class="col-8" style="background-color: aliceblue;">
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                        <form class="registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                            <div class="form-row">
+                                <div class="col col-lg-3">
+                                    <label for="inputName">Name</label>
+                                    <input type="email" class="form-control" id="inputName" placeholder="Enter Name" formControlName="inputName">
+                                </div>
+                                <div class="col col-lg-3">
+                                    <label for="inputSurname">Surname</label>
+                                    <input type="email" class="form-control" id="inputSurname" placeholder="Enter Surname" formControlName="inputSurname">
+                                </div>
+                                <div class="col col-lg-3">
+                                    <label for="inputUserName">Username</label>
+                                    <input type="email" class="form-control" id="inputUserName" placeholder="Enter Username" formControlName="inputUserName">
+                                </div>
+                            </div>
+                            <div class="form-row" style="align-items: flex-end;">
+                                <div class="col col-lg-3">
+                                    <label for="inputEmail">Email</label>
+                                    <input type="email" class="form-control" id="inputEmail" placeholder="Enter Email" formControlName="inputEmail" disabled="true">
+                                </div>
+                                <div class="col col-lg-3">
+                                    <button type="submit" class="btn btn-info">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

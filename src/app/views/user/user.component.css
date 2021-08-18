@@ -1,0 +1,136 @@
+#container {
+    position: relative;
+    margin-left: 2%;
+}
+
+#pic,
+#info {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#info {
+    z-index: 10;
+    top: 300px;
+}
+
+form {
+    margin: 2%;
+}
+
+.fa,
+.fas {
+    font-weight: 600;
+    color: darkslategray;
+}
+
+.header-account {
+    position: absolute;
+    top: 10px;
+}
+
+.file-upload {
+    display: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+img[src=""] {
+    display: none;
+}
+
+.upload-button {
+    font-size: 1.2em;
+}
+
+.upload-button:hover {
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    color: #999;
+}
+
+.default-image {
+    position: absolute;
+    left: 25px;
+    top: 15px;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    color: white;
+    font-size: x-large;
+    background-color: #FFCED4;
+    border-color: #FFCED4;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    color: black;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .125);
+    font-size: large;
+}
+
+.hoverable {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    height: 130px;
+    width: 130px;
+    border: 5px solid white;
+    border-radius: 50%;
+}
+
+.hoverable .hover-text {
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.hoverable .background {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.hoverable:hover .hover-text {
+    display: block;
+}
+
+.hoverable:hover .background {
+    display: block;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+#fileInput {
+    display: none;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    padding-bottom: 120px;
+}
